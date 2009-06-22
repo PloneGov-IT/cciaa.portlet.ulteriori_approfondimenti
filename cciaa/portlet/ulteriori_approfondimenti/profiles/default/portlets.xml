@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<portlets>
+
+ <!-- Portlet type registrations -->
+
+ <portlet
+   addview="cciaa.portlet.ulteriori_approfondimenti.UlterioriApprofondimenti"
+   title="Ulteriori Approfondimenti"
+   description=""
+   />
+
+</portlets>
