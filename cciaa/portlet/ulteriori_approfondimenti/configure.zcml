@@ -17,20 +17,13 @@
 
      <!-- Register the portlet -->
 
-     <!-- If the portlet has no configurable parameters, you can remove
-          the EditForm declaration in ulterioriapprofondimenti.py and delete
-          the 'editview' attribute from this statement.
-       -->
-
      <plone:portlet
          name="cciaa.portlet.ulteriori_approfondimenti.UlterioriApprofondimenti"
          interface=".ulterioriapprofondimenti.IUlterioriApprofondimenti"
          assignment=".ulterioriapprofondimenti.Assignment"
          view_permission="zope2.View"
-         edit_permission="cmf.ManagePortal"
          renderer=".ulterioriapprofondimenti.Renderer"
          addview=".ulterioriapprofondimenti.AddForm"
-         editview=".ulterioriapprofondimenti.EditForm"
          />
 
 </configure>

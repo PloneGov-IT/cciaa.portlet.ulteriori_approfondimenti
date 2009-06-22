@@ -1,4 +1,5 @@
 from zope.interface import implements
+from Products.CMFCore.utils import getToolByName
 
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
@@ -18,32 +19,13 @@ class IUlterioriApprofondimenti(IPortletDataProvider):
     same.
     """
 
-    # TODO: Add any zope.schema fields here to capture portlet configuration
-    # information. Alternatively, if there are no settings, leave this as an
-    # empty interface - see also notes around the add form and edit form
-    # below.
-
-    # some_field = schema.TextLine(title=_(u"Some field"),
-    #                              description=_(u"A field to use"),
-    #                              required=True)
-
-
 class Assignment(base.Assignment):
     """Portlet assignment.
 
     This is what is actually managed through the portlets UI and associated
     with columns.
     """
-
     implements(IUlterioriApprofondimenti)
-
-    # TODO: Set default values for the configurable parameters here
-
-    # some_field = u""
-
-    # TODO: Add keyword parameters for configurable parameters here
-    # def __init__(self, some_field=u""):
-    #    self.some_field = some_field
 
     def __init__(self):
         pass
@@ -63,11 +45,26 @@ class Renderer(base.Renderer):
     rendered, and the implicit variable 'view' will refer to an instance
     of this class. Other methods can be added and referenced in the template.
     """
-
+    @property
+    def available(self):
+        if 'ulteriori-approfondimenti' in self.context.keys() or 'ulteriori-approfondimenti' in self.context.aq_inner.aq_parent.keys():
+            return True
+        else:
+            return False
+    
+    def getApprofondimenti(self):
+        if 'ulteriori-approfondimenti' in self.context.keys():
+            folder = getattr(self.context,'ulteriori-approfondimenti',False)
+            return folder.portal_catalog(path=dict(query='/'.join(folder.getPhysicalPath()), depth=1))
+        
+        if 'ulteriori-approfondimenti' in self.context.aq_inner.aq_parent.keys():
+            folder = getattr(self.context.aq_inner.aq_parent,'ulteriori-approfondimenti',False)
+            return folder.portal_catalog(path=dict(query='/'.join(folder.getPhysicalPath()), depth=1))
+        
     render = ViewPageTemplateFile('ulterioriapprofondimenti.pt')
 
 
-class AddForm(base.AddForm):
+class AddForm(base.NullAddForm):
     """Portlet add form.
 
     This is registered in configure.zcml. The form_fields variable tells
@@ -76,29 +73,5 @@ class AddForm(base.AddForm):
     """
     form_fields = form.Fields(IUlterioriApprofondimenti)
 
-    def create(self, data):
-        return Assignment(**data)
-
-
-# NOTE: If this portlet does not have any configurable parameters, you
-# can use the next AddForm implementation instead of the previous.
-
-# class AddForm(base.NullAddForm):
-#     """Portlet add form.
-#     """
-#     def create(self):
-#         return Assignment()
-
-
-# NOTE: If this portlet does not have any configurable parameters, you
-# can remove the EditForm class definition and delete the editview
-# attribute from the <plone:portlet /> registration in configure.zcml
-
-
-class EditForm(base.EditForm):
-    """Portlet edit form.
-
-    This is registered with configure.zcml. The form_fields variable tells
-    zope.formlib which fields to display.
-    """
-    form_fields = form.Fields(IUlterioriApprofondimenti)
+    def create(self):
+        return Assignment()
