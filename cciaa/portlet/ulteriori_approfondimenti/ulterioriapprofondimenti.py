@@ -47,7 +47,7 @@ class Renderer(base.Renderer):
     """
     @property
     def available(self):
-        if 'ulteriori-approfondimenti' in self.context.keys() or 'ulteriori-approfondimenti' in self.context.aq_inner.aq_parent.keys():
+        if ('ulteriori-approfondimenti' in self.context.keys() or 'ulteriori-approfondimenti' in self.context.aq_inner.aq_parent.keys()) and self.getApprofondimenti():
             return True
         else:
             return False
