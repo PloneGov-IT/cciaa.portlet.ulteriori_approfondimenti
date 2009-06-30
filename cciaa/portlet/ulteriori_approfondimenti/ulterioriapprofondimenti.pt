@@ -4,16 +4,23 @@
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
-        Ulteriori Approfondimenti
+        	<span tal:content="view/getTitle"/>
         <span class="portletTopRight"></span>
     </dt>
 
     <dd class="portletItem">
     	<ul>
  			<li tal:repeat="item view/getApprofondimenti">
-    			<a href="" tal:attributes="href item/getURL">
-					<span tal:content="item/Title"/>
-        		</a>
+ 				<tal:is_file condition="python:item.portal_type != 'Link'">
+    				<a href="" tal:attributes="href item/getURL">
+						<span tal:content="item/Title"/>
+        			</a>
+				</tal:is_file>
+				<tal:is_link condition="python:item.portal_type=='Link'">
+					<a href="" tal:attributes="href item/getRemoteUrl">
+						<span tal:content="item/Title"/>
+        			</a>
+				</tal:is_link>
 			</li>
 		</ul>
     </dd>

@@ -1,5 +1,11 @@
 Changelog
 =========
+1.0.1 (2009-06-30)
+------------------
+
+* Modificato compotamento dei link nella portlet (#99) [andrea]
+* Modificato titolo della portlet. adesso lo prende su dinamicamente dal nome della cartella (#111) [andrea]
+
 
 1.0.0 (2009-06-22)
 ------------------

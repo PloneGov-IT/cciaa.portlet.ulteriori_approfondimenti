@@ -52,6 +52,16 @@ class Renderer(base.Renderer):
         else:
             return False
     
+    def getTitle(self):
+        """"""
+        if 'ulteriori-approfondimenti' in self.context.keys():
+            return getattr(self.context,'ulteriori-approfondimenti',False).Title()
+        elif 'ulteriori-approfondimenti' in self.context.aq_inner.aq_parent.keys():
+            return getattr(self.context.aq_inner.aq_parent,'ulteriori-approfondimenti',False).Title()
+        else:
+            return "Ulteriori Approfondimenti"
+            
+        
     def getApprofondimenti(self):
         if 'ulteriori-approfondimenti' in self.context.keys():
             folder = getattr(self.context,'ulteriori-approfondimenti',False)
@@ -60,6 +70,9 @@ class Renderer(base.Renderer):
         if 'ulteriori-approfondimenti' in self.context.aq_inner.aq_parent.keys():
             folder = getattr(self.context.aq_inner.aq_parent,'ulteriori-approfondimenti',False)
             return folder.portal_catalog(path=dict(query='/'.join(folder.getPhysicalPath()), depth=1))
+        
+    def appo(self,item):
+        import pdb;pdb.set_trace()
         
     render = ViewPageTemplateFile('ulterioriapprofondimenti.pt')
 
