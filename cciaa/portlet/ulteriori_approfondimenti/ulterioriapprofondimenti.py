@@ -71,9 +71,6 @@ class Renderer(base.Renderer):
             folder = getattr(self.context.aq_inner.aq_parent,'ulteriori-approfondimenti',False)
             return folder.portal_catalog(path=dict(query='/'.join(folder.getPhysicalPath()), depth=1))
         
-    def appo(self,item):
-        import pdb;pdb.set_trace()
-        
     render = ViewPageTemplateFile('ulterioriapprofondimenti.pt')
 
 
