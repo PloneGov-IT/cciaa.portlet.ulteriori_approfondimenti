@@ -65,11 +65,15 @@ class Renderer(base.Renderer):
     def getApprofondimenti(self):
         if 'ulteriori-approfondimenti' in self.context.keys():
             folder = getattr(self.context,'ulteriori-approfondimenti',False)
-            return folder.portal_catalog(path=dict(query='/'.join(folder.getPhysicalPath()), depth=1))
+            return folder.portal_catalog(path=dict(query='/'.join(folder.getPhysicalPath()), depth=1),
+                                         sort_on='getObjPositionInParent',
+                                         sort_order='asc')
         
         if 'ulteriori-approfondimenti' in self.context.aq_inner.aq_parent.keys():
             folder = getattr(self.context.aq_inner.aq_parent,'ulteriori-approfondimenti',False)
-            return folder.portal_catalog(path=dict(query='/'.join(folder.getPhysicalPath()), depth=1))
+            return folder.portal_catalog(path=dict(query='/'.join(folder.getPhysicalPath()), depth=1),
+                                         sort_on='getObjPositionInParent',
+                                         sort_order='asc')
         
     render = ViewPageTemplateFile('ulterioriapprofondimenti.pt')
 
