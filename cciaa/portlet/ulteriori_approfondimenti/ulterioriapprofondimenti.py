@@ -94,7 +94,10 @@ class Renderer(base.Renderer):
                     return ''
         else:
             if 'ulteriori-approfondimenti' in self.context.keys():
-                return '/'.join(item_path) +'/ulteriori-approfondimenti'
+                if self.context.portal_type=='Folder':
+                    return '/'.join(item_path) +'/ulteriori-approfondimenti'
+                else:
+                    return '/'.join(item_path[:-1]) +'/ulteriori-approfondimenti'
             else:
                 result= self.context.portal_catalog(path=dict(query='/'.join(item_path[:-1]), depth=1),
                                                     portal_type='Folder',
