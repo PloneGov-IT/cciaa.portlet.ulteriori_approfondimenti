@@ -78,7 +78,7 @@ class Renderer(base.Renderer):
         """controlla se tra i figli o nel padre è presente una cartella ulteriori approfondimenti"""
         plone_view = getMultiAdapter((aq_inner(self.context), self.request), name='plone')
         item_path = self.context.getPhysicalPath()
-        if plone_view.isDefaultPageInFolder():
+        if plone_view.isDefaultPageInFolder() or self.context.portal_type != 'Folder':
             result= self.context.portal_catalog(path=dict(query='/'.join(item_path[:-1]), depth=1),
                                                portal_type='Folder',
                                                id='ulteriori-approfondimenti')
