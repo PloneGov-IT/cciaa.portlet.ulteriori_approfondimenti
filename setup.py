@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0.5-SVN_UNRELEASED'
+version = '1.0.5'
 
 setup(name='cciaa.portlet.ulteriori_approfondimenti',
       version=version,
