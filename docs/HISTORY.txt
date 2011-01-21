@@ -1,12 +1,13 @@
 Changelog
 =========
 
-1.0.6 (Unreleased)
+1.1.0 (2011-01-21)
 ------------------
 
 * pulizia egg [keul]
 * supporto z3c.autoinclude [keul]
-* chiusura del #254 [keul]
+* id della cartella "ulteriori approfondimenti" è modificabile nella portlet [keul]
+* chiusura del #254; livello di profondità ora è configurabile [keul]
 
 1.0.5 (2009-09-??)
 ------------------

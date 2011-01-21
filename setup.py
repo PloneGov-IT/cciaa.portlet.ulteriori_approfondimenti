@@ -1,7 +1,9 @@
+# -*- coding: utf-8 -*-
+
 from setuptools import setup, find_packages
 import os
 
-version = '1.0.6'
+version = '1.1.0'
 
 setup(name='cciaa.portlet.ulteriori_approfondimenti',
       version=version,
