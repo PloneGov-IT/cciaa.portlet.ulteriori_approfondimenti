@@ -3,12 +3,12 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.1.0'
+version = '1.1.1'
 
 setup(name='cciaa.portlet.ulteriori_approfondimenti',
       version=version,
-      description="A portlet that show the C3P \"Ulteriori Approfondimenti\" section",
-      long_description=open("README.txt").read() + "\n" +
+      description='Un riquadro che mostra una sezione "Ulteriori Approfondimenti"',
+      long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
@@ -20,7 +20,7 @@ setup(name='cciaa.portlet.ulteriori_approfondimenti',
       keywords='',
       author='RedTurtle Technology',
       author_email='sviluppoplone@redturtle.it',
-      url='https://code.redturtle.it/svn/camera-di-commercio-fe/C3P/cciaa.portlet.ulteriori_approfondimenti',
+      url='https://github.com/PloneGov-IT/cciaa.portlet.ulteriori_approfondimenti',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['cciaa', 'cciaa.portlet'],
