@@ -64,7 +64,10 @@ class Renderer(base.Renderer):
             return "Ulteriori Approfondimenti"
         
     def getApprofondimenti(self):
-        """ritorna l'elenco degli oggetti contenuti nella cartella ulteriori approfondimenti, altrimenti torna una stringa vuota"""
+        """
+        Ritorna l'elenco degli oggetti contenuti nella cartella ulteriori approfondimenti,
+        altrimenti torna una stringa vuota
+        """
         folder_path = self._getApprofondimentiPath(self.data.up_levels) 
         if folder_path:
             return self.context.portal_catalog(path={'query': folder_path,'depth':1},
