@@ -18,6 +18,12 @@ Il riquadro mostra tutti i contenuti interni a questa cartella.
 Il riquadro può essere mostrato anche quando la navigazione si sposta più internamente alla sezione corrente;
 per impostazione predefinita rimane visibile fino a due livelli
 
+Compatibilità
+=============
+
+Dalla versione 2.0.0 questo prodotto è compatibile con Plone >= 5.
+Per Plone 4, utilizzare le versioni < 2.0.0.
+
 Crediti
 =======
 
