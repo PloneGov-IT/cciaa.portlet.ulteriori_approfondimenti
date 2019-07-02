@@ -8,7 +8,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope import schema
 from zope.component import getMultiAdapter
-from zope.interface import implements
+from zope.interface import implementer
 
 
 class IUlterioriApprofondimenti(IPortletDataProvider):
@@ -34,10 +34,9 @@ class IUlterioriApprofondimenti(IPortletDataProvider):
     )
 
 
+@implementer(IUlterioriApprofondimenti)
 class Assignment(base.Assignment):
     """Portlet assignment."""
-
-    implements(IUlterioriApprofondimenti)
 
     ua_id = u'ulteriori-approfondimenti'
     up_levels = 2
